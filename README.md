@@ -512,6 +512,7 @@ These assignments ensure secure and simplified access management aligned with Az
 
 ## Limitations
 - **Immutable Network Isolation Mode**: Once a network isolation mode is selected and the hub is deployed, it cannot be changed. To switch modes, you must delete and redeploy the AI Foundry hub.
+- **AI Agents**: it is not possible to configure them from a project in a VNET – see here why: [How to use a virtual network with the Azure AI Agent Service - Azure OpenAI | Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-services/agents/how-to/virtual-networks)
 - **Managed VNet Deletion**: Deleting the AI Foundry hub will also delete the managed VNet, potentially impacting connected resources.
 - **Setup Time**: To expedite setup, manually provision network resources or deploy a compute instance early in the deployment process.
 - **Connectivity Testing**: Always verify connectivity post-setup to ensure all required resources are accessible under the chosen isolation mode.
