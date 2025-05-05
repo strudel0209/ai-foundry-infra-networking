@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": "swedencentral"
+    },
+    "aiSearchName": {
+      "value": "<your-ai-search-name>"
+    },
+    "aiOpenAIName": {
+      "value": "<your-ai-openai-name>"
+    },
+    "storageAccountName": {
+      "value": "<your-storage-account-name>"
+    },
+    "blobPrivateEndpointName": {
+      "value": "<your-blob-private-endpoint-name>"
+    },
+    "aiSearchPrincipalId": {
+      "value": "<principal-id-of-ai-search-service>"
+    },
+    "aiOpenAIPrincipalId": {
+      "value": "<principal-id-of-ai-openai-service>"
+    },
+    "aiFoundryProjectPrincipalId": {
+      "value": "<principal-id-of-ai-foundry-project>"
+    },
+    "developerPrincipalId": {
+      "value": "<developer-azure-ad-object-id>"
+    }
+  }
+}

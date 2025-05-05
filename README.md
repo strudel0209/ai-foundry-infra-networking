@@ -414,6 +414,75 @@ az network firewall network-rule create \
   --action Allow
 ```
 
+## Simplifying RBAC Configuration with Bicep
+
+To simplify the RBAC configuration required for both Azure AI Foundry services and users accessing resources from a private VNet, use the provided Bicep template (`main.bicep`) and its corresponding parameters file (`parameters.json`). These scripts automate the assignment of necessary RBAC roles, ensuring secure and streamlined access management.
+
+### Deploying RBAC Configuration using Bicep
+
+1. **Review and update parameters** in `parameters.json` with your specific resource names and principal IDs:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "aiSearchName": { "value": "<your-ai-search-service-name>" },
+    "aiOpenAIName": {
+      "value": "<your-openai-service-name>"
+    },
+    "storageAccountName": {
+      "value": "<your-storage-account-name>"
+    },
+    "blobPrivateEndpointName": {
+      "value": "<your-blob-private-endpoint-name>"
+    },
+    "aiSearchPrincipalId": {
+      "value": "<principal-id-of-ai-search-service>"
+    },
+    "aiOpenAIPrincipalId": {
+      "value": "<principal-id-of-ai-openai-service>"
+    },
+    "developerPrincipalId": {
+      "value": "<developer-azure-ad-object-id>"
+    },
+    "storageAccountName2": {
+      "value": "<your-second-storage-account-name>"
+    },
+    "developerPrincipalId": {
+      "value": "<developer-azure-ad-object-id>"
+    }
+}
+```
+
+### Deploying the Bicep Template
+
+Deploy the provided `main.bicep` template using Azure CLI:
+
+```bash
+az deployment group create \
+  --resource-group CustomerNetworkRG \
+  --template-file main.bicep \
+  --parameters @parameters.json
+```
+
+This deployment will automatically configure the necessary RBAC roles for:
+
+- Azure AI Foundry services (AI Search, OpenAI, Storage Accounts)
+- Developers and users accessing AI Foundry resources securely from the private VNet
+
+The provided Bicep template assigns roles such as:
+
+- **Search Index Data Contributor**
+- **Search Index Data Reader**
+- **Cognitive Services Contributor**
+- **Storage Blob Data Contributor**
+- **Storage File Data Privileged Contributor**
+
+These assignments ensure secure and simplified access management aligned with Azure best practices.
+
+> **Note**: Ensure all principal IDs and resource names in `parameters.json` match your Azure environment before deployment.
+
 ## Summary
 - **Network Isolation**: Azure AI Foundry’s managed VNet isolates the hub’s compute resources from public networks. It connects to Azure services via private endpoints, ensuring secure communication.
 
