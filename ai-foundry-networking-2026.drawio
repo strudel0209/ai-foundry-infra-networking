@@ -1,0 +1,575 @@
+<mxfile host="65bd71144e" pages="3">
+    <diagram id="page-managed-internet" name="1. Managed VNet - Allow Internet Outbound">
+        <mxGraphModel dx="1092" dy="1001" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1850" pageHeight="1390" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="p1-title" value="Azure AI Foundry Networking — Managed VNet · Allow Internet Outbound (mid-2026, account + project model)" style="text;html=1;fontSize=18;fontStyle=1;verticalAlign=middle;align=left;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="20" width="1180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-legend" value="&lt;b&gt;Legend&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;color:#6c8ebf&quot;&gt;■&lt;/span&gt; Customer subscription / VNet&amp;nbsp;&amp;nbsp;&lt;span style=&quot;color:#9673a6&quot;&gt;■&lt;/span&gt; Microsoft-managed VNet&lt;br&gt;&lt;span style=&quot;color:#82b366&quot;&gt;■&lt;/span&gt; BYO PaaS dependencies&amp;nbsp;&amp;nbsp;&lt;span style=&quot;color:#d79b00&quot;&gt;■&lt;/span&gt; Private DNS zones&lt;br&gt;&lt;span style=&quot;color:#82b366&quot;&gt;→&lt;/span&gt; Inbound flow&amp;nbsp;&amp;nbsp;&lt;span style=&quot;color:#0e8a8a&quot;&gt;⇢&lt;/span&gt; Private Link / DNS&amp;nbsp;&amp;nbsp;&lt;span style=&quot;color:#d79b00&quot;&gt;→&lt;/span&gt; Outbound flow&lt;br&gt;Layers (left panel): Access · Foundry · Dependencies · Net · Inbound · Outbound" style="text;html=1;align=left;verticalAlign=top;fillColor=#f5f5f5;strokeColor=#cccccc;fontSize=11;spacing=8;rounded=1;" parent="1" vertex="1">
+                    <mxGeometry x="1240" y="20" width="560" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-onprem" value="On-premises network" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;verticalAlign=top;fontStyle=1;fontSize=12;opacity=70;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="320" width="220" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-vnet" value="Customer Subscription — VNet (10.100.0.0/16)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;verticalAlign=top;fontStyle=1;fontSize=13;opacity=60;arcSize=2;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="150" width="980" height="1010" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-dnszone" value="Private DNS Zones (linked to VNet)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;verticalAlign=top;fontStyle=1;fontSize=12;opacity=80;" parent="1" vertex="1">
+                    <mxGeometry x="330" y="200" width="300" height="250" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-gwsub" value="GatewaySubnet (10.100.254.0/27)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#6c8ebf;dashed=1;verticalAlign=top;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="330" y="480" width="300" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-bassub" value="AzureBastionSubnet" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#6c8ebf;dashed=1;verticalAlign=top;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="330" y="660" width="300" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-wlsub" value="CustomerWorkloadsSubnet (10.100.1.0/24)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#6c8ebf;dashed=1;verticalAlign=top;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="660" y="200" width="590" height="900" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-fzone" value="Microsoft Foundry account (Microsoft.CognitiveServices/accounts)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;verticalAlign=top;fontStyle=1;fontSize=12;opacity=70;" parent="1" vertex="1">
+                    <mxGeometry x="1330" y="160" width="480" height="420" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-depzone" value="Agent dependencies — Bring Your Own PaaS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;verticalAlign=top;fontStyle=1;fontSize=12;opacity=70;" parent="1" vertex="1">
+                    <mxGeometry x="1330" y="610" width="480" height="330" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-mvnetzone" value="Microsoft-managed VNet (Agent compute · Microsoft tenant)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;verticalAlign=top;fontStyle=1;fontSize=12;opacity=80;" parent="1" vertex="1">
+                    <mxGeometry x="1330" y="970" width="480" height="250" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-Laccess" value="2. Customer Access" parent="0"/>
+                <mxCell id="p1-users" value="On-prem users / DNS forwarder" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=10;" parent="p1-Laccess" vertex="1">
+                    <mxGeometry x="70" y="380" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-vpngw" value="VPN / ExpressRoute Gateway" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/networking/Virtual_Network_Gateways.svg;fontSize=10;" parent="p1-Laccess" vertex="1">
+                    <mxGeometry x="430" y="520" width="48" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-bastion" value="Azure Bastion" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=10;" parent="p1-Laccess" vertex="1">
+                    <mxGeometry x="400" y="700" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-vm" value="Jump VM / dev client" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/compute/Virtual_Machine.svg;fontSize=10;" parent="p1-Laccess" vertex="1">
+                    <mxGeometry x="700" y="250" width="48" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-Lfoundry" value="3. Foundry Account + Project" parent="0"/>
+                <mxCell id="p1-pubnote" value="Public network access: Disabled" style="text;html=1;align=center;fillColor=#f8cecc;strokeColor=#b85450;rounded=1;fontSize=10;fontStyle=1;" parent="p1-Lfoundry" vertex="1">
+                    <mxGeometry x="1360" y="195" width="420" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-acct" value="Foundry account" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/ai_machine_learning/Cognitive_Services.svg;fontSize=10;" parent="p1-Lfoundry" vertex="1">
+                    <mxGeometry x="1370" y="235" width="48" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-proj" value="Project (sub-resource)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#6c8ebf;verticalAlign=top;fontSize=11;fontStyle=1;" parent="p1-Lfoundry" vertex="1">
+                    <mxGeometry x="1370" y="300" width="420" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-deploys" value="Model deployments (gpt-…)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=10;" parent="p1-Lfoundry" vertex="1">
+                    <mxGeometry x="1390" y="335" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-agents" value="Agents (Responses API)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=10;" parent="p1-Lfoundry" vertex="1">
+                    <mxGeometry x="1590" y="335" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-fqdn" value="3 FQDNs: {name}.openai.azure.com · {name}.services.ai.azure.com · {name}.cognitiveservices.azure.com" style="text;html=1;align=left;verticalAlign=middle;fillColor=#fff2cc;strokeColor=#d6b656;rounded=1;fontSize=10;spacing=6;" parent="p1-Lfoundry" vertex="1">
+                    <mxGeometry x="1390" y="405" width="380" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-Ldeps" value="4. Agent Dependencies (BYO PaaS)" parent="0"/>
+                <mxCell id="p1-storage" value="Azure Storage (files)" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/storage/Storage_Accounts.svg;fontSize=10;" parent="p1-Ldeps" vertex="1">
+                    <mxGeometry x="1370" y="660" width="48" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-search" value="Azure AI Search (indexes)" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/ai_machine_learning/Cognitive_Search.svg;fontSize=10;" parent="p1-Ldeps" vertex="1">
+                    <mxGeometry x="1540" y="660" width="48" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-cosmos" value="Azure Cosmos DB (agent threads/state)" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/databases/Azure_Cosmos_DB.svg;fontSize=10;" parent="p1-Ldeps" vertex="1">
+                    <mxGeometry x="1710" y="660" width="48" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-depnote" value="Public access disabled — reached via Private Endpoints" style="text;html=1;align=center;fillColor=#f8cecc;strokeColor=#b85450;rounded=1;fontSize=10;" parent="p1-Ldeps" vertex="1">
+                    <mxGeometry x="1360" y="760" width="420" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-kv" value="Key Vault" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/security/Key_Vaults.svg;fontSize=9;" parent="p1-Ldeps" vertex="1">
+                    <mxGeometry x="1600" y="800" width="36" height="36" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-acr" value="Container Registry" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/containers/Container_Registries.svg;fontSize=9;" parent="p1-Ldeps" vertex="1">
+                    <mxGeometry x="1700" y="800" width="36" height="36" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-classicnote" value="Key Vault &amp; ACR: classic-Hub dependencies, optional in account model. Private ACR supported for projects created after 2026-06-25." style="text;html=1;align=left;verticalAlign=top;fillColor=#f5f5f5;strokeColor=#999999;rounded=1;fontSize=9;spacing=4;" parent="p1-Ldeps" vertex="1">
+                    <mxGeometry x="1360" y="800" width="230" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-Lnet" value="5. Private Endpoints, DNS &amp; Managed VNet" parent="0"/>
+                <mxCell id="p1-dnsicon" value="" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;imageAspect=0;aspect=fixed;image=img/lib/azure2/networking/DNS_Private_Zones.svg;" parent="p1-Lnet" vertex="1">
+                    <mxGeometry x="345" y="225" width="34" height="34" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-dnstext" value="• privatelink.openai.azure.com&lt;br&gt;• privatelink.services.ai.azure.com&lt;br&gt;• privatelink.cognitiveservices.azure.com&lt;br&gt;• privatelink.blob.core.windows.net&lt;br&gt;• privatelink.search.windows.net&lt;br&gt;• privatelink.documents.azure.com" style="text;html=1;align=left;verticalAlign=top;fillColor=none;strokeColor=none;fontSize=10;spacing=4;" parent="p1-Lnet" vertex="1">
+                    <mxGeometry x="345" y="265" width="280" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-pe-foundry" value="PE • Foundry (account)" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/networking/Private_Link.svg;fontSize=9;" parent="p1-Lnet" vertex="1">
+                    <mxGeometry x="1090" y="260" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-pe-storage" value="PE • Storage" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/networking/Private_Link.svg;fontSize=9;" parent="p1-Lnet" vertex="1">
+                    <mxGeometry x="1090" y="430" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-pe-search" value="PE • AI Search" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/networking/Private_Link.svg;fontSize=9;" parent="p1-Lnet" vertex="1">
+                    <mxGeometry x="1090" y="600" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-pe-cosmos" value="PE • Cosmos DB" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/networking/Private_Link.svg;fontSize=9;" parent="p1-Lnet" vertex="1">
+                    <mxGeometry x="1090" y="770" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-outmode" value="Outbound mode: Allow Internet Outbound" style="text;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;fontSize=10;fontStyle=1;" parent="p1-Lnet" vertex="1">
+                    <mxGeometry x="1490" y="1000" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-agentcompute" value="Agent compute&#xa;(Microsoft tenant)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=10;" parent="p1-Lnet" vertex="1">
+                    <mxGeometry x="1620" y="1050" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-internet" value="Internet" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=10;" parent="p1-Lnet" vertex="1">
+                    <mxGeometry x="1625" y="1145" width="150" height="65" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-e-pef-acct" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#0e8a8a;strokeWidth=2;dashed=1;" parent="p1-Lnet" source="p1-pe-foundry" target="p1-acct" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-e-pes-st" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#0e8a8a;strokeWidth=2;dashed=1;" parent="p1-Lnet" source="p1-pe-storage" target="p1-storage" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-e-pes-se" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#0e8a8a;strokeWidth=2;dashed=1;" parent="p1-Lnet" source="p1-pe-search" target="p1-search" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-e-pec-co" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#0e8a8a;strokeWidth=2;dashed=1;" parent="p1-Lnet" source="p1-pe-cosmos" target="p1-cosmos" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-Linbound" value="6. Inbound Flows" parent="0"/>
+                <mxCell id="p1-i-users-gw" value="VPN/ER" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#82b366;strokeWidth=2;fontSize=9;" parent="p1-Linbound" source="p1-users" target="p1-vpngw" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-i-gw-pe" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#82b366;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="p1-Linbound" source="p1-vpngw" target="p1-pe-foundry" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1040" y="544"/>
+                            <mxPoint x="1040" y="330"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="p1-i-bas-vm" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#82b366;strokeWidth=2;" parent="p1-Linbound" source="p1-bastion" target="p1-vm" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-Loutbound" value="7. Outbound Flows" parent="0"/>
+                <mxCell id="p1-o-acct-compute" value="agents run on managed compute" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#d79b00;strokeWidth=2;fontSize=9;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="p1-Loutbound" source="p1-agents" target="p1-agentcompute" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1825" y="362"/>
+                            <mxPoint x="1825" y="1085"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="p1-o-compute-net" value="egress: all internet allowed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#d79b00;strokeWidth=2;fontSize=9;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="p1-Loutbound" source="p1-agentcompute" target="p1-internet" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-o-mpe-deps" value="to BYO dependencies" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#d79b00;strokeWidth=2;dashed=1;fontSize=9;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.22;entryY=1;entryDx=0;entryDy=0;" parent="p1-Loutbound" source="p1-mpe" target="p1-depzone" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="private data plane" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#d79b00;strokeWidth=2;dashed=1;fontSize=9;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="p1-Loutbound" source="p1-agentcompute" target="p1-mpe">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-mpe" value="Managed PEs&#xa;(no customer NIC)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=9;" parent="p1-Loutbound" vertex="1">
+                    <mxGeometry x="1360" y="1050" width="150" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-Lgw" value="8. AI Gateway &amp; Agent Tools" parent="0"/>
+                <mxCell id="p1-apim" value="Azure APIM (AI Gateway)" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/app_services/API_Management_Services.svg;fontSize=9;" vertex="1" parent="p1-Lgw">
+                    <mxGeometry x="868" y="250" width="48" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-tools" value="&lt;b&gt;Agent tools&lt;/b&gt; (invoked by the agent)&lt;br&gt;Private via managed PE / APIM: MCP · OpenAPI · Azure Functions · A2A · AI Search&lt;br&gt;Microsoft backbone: Function Calling · Code Interpreter&lt;br&gt;Public endpoint: Bing · Web Search · SharePoint&lt;br&gt;&lt;i&gt;APIM can publish APIs as MCP tools and front model endpoints&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ede7f6;strokeColor=#5e35b1;fontSize=10;spacing=6;" vertex="1" parent="p1-Lgw">
+                    <mxGeometry x="1330" y="1255" width="480" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-gw-vm-apim" value="governed model calls" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#1f6feb;strokeWidth=2;fontSize=9;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="p1-Lgw" source="p1-vm" target="p1-apim">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-gw-apim-pe" value="to model endpoint (PE)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#1f6feb;strokeWidth=2;fontSize=9;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="p1-Lgw" source="p1-apim" target="p1-pe-foundry">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-gw-mpe-tools" value="private tools via managed PE" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#0e8a8a;strokeWidth=2;dashed=1;fontSize=9;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.22;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="p1-Lgw" source="p1-mpe" target="p1-tools">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-gw-net-tools" value="public tools" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#d79b00;strokeWidth=2;dashed=1;fontSize=9;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.77;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="p1-Lgw" source="p1-internet" target="p1-tools">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="page-managed-approved" name="2. Managed VNet - Allow Approved Outbound">
+        <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1850" pageHeight="1440" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="p2-title" value="Azure AI Foundry Networking — Managed VNet · Allow Only Approved Outbound (mid-2026)" style="text;html=1;fontSize=18;fontStyle=1;verticalAlign=middle;align=left;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="20" width="1180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-legend" value="&lt;b&gt;Legend&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;color:#6c8ebf&quot;&gt;■&lt;/span&gt; Customer VNet&amp;nbsp;&lt;span style=&quot;color:#9673a6&quot;&gt;■&lt;/span&gt; Managed VNet + Firewall&lt;br&gt;&lt;span style=&quot;color:#82b366&quot;&gt;→&lt;/span&gt; Inbound&amp;nbsp;&lt;span style=&quot;color:#0e8a8a&quot;&gt;⇢&lt;/span&gt; Private Link&amp;nbsp;&lt;span style=&quot;color:#d79b00&quot;&gt;→&lt;/span&gt; Approved outbound&lt;br&gt;Outbound restricted to service tags, FQDN rules (80/443) &amp; private endpoints." style="text;html=1;align=left;verticalAlign=top;fillColor=#f5f5f5;strokeColor=#cccccc;fontSize=11;spacing=8;rounded=1;" parent="1" vertex="1">
+                    <mxGeometry x="1240" y="20" width="560" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-onprem" value="On-premises network" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;verticalAlign=top;fontStyle=1;fontSize=12;opacity=70;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="320" width="220" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-vnet" value="Customer Subscription — VNet (10.100.0.0/16)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;verticalAlign=top;fontStyle=1;fontSize=13;opacity=60;arcSize=2;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="150" width="980" height="1010" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-dnszone" value="Private DNS Zones (linked to VNet)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;verticalAlign=top;fontStyle=1;fontSize=12;opacity=80;" parent="1" vertex="1">
+                    <mxGeometry x="330" y="200" width="300" height="250" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-gwsub" value="GatewaySubnet (10.100.254.0/27)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#6c8ebf;dashed=1;verticalAlign=top;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="330" y="480" width="300" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-bassub" value="AzureBastionSubnet" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#6c8ebf;dashed=1;verticalAlign=top;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="330" y="660" width="300" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-wlsub" value="CustomerWorkloadsSubnet (10.100.1.0/24)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#6c8ebf;dashed=1;verticalAlign=top;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="660" y="200" width="590" height="900" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-fzone" value="Microsoft Foundry account (Microsoft.CognitiveServices/accounts)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;verticalAlign=top;fontStyle=1;fontSize=12;opacity=70;" parent="1" vertex="1">
+                    <mxGeometry x="1330" y="160" width="480" height="420" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-depzone" value="Agent dependencies — Bring Your Own PaaS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;verticalAlign=top;fontStyle=1;fontSize=12;opacity=70;" parent="1" vertex="1">
+                    <mxGeometry x="1330" y="610" width="480" height="330" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-mvnetzone" value="Microsoft-managed VNet (Agent compute + Azure Firewall)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;verticalAlign=top;fontStyle=1;fontSize=12;opacity=80;" parent="1" vertex="1">
+                    <mxGeometry x="1330" y="970" width="480" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-Laccess" value="2. Customer Access" parent="0"/>
+                <mxCell id="p2-users" value="On-prem users / DNS forwarder" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=10;" parent="p2-Laccess" vertex="1">
+                    <mxGeometry x="70" y="380" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-vpngw" value="VPN / ExpressRoute Gateway" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/networking/Virtual_Network_Gateways.svg;fontSize=10;" parent="p2-Laccess" vertex="1">
+                    <mxGeometry x="430" y="520" width="48" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-bastion" value="Azure Bastion" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=10;" parent="p2-Laccess" vertex="1">
+                    <mxGeometry x="400" y="700" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-vm" value="Jump VM / dev client" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/compute/Virtual_Machine.svg;fontSize=10;" parent="p2-Laccess" vertex="1">
+                    <mxGeometry x="700" y="250" width="48" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-Lfoundry" value="3. Foundry Account + Project" parent="0"/>
+                <mxCell id="p2-pubnote" value="Public network access: Disabled" style="text;html=1;align=center;fillColor=#f8cecc;strokeColor=#b85450;rounded=1;fontSize=10;fontStyle=1;" parent="p2-Lfoundry" vertex="1">
+                    <mxGeometry x="1360" y="195" width="420" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-acct" value="Foundry account" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/ai_machine_learning/Cognitive_Services.svg;fontSize=10;" parent="p2-Lfoundry" vertex="1">
+                    <mxGeometry x="1370" y="235" width="48" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-proj" value="Project (sub-resource)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#6c8ebf;verticalAlign=top;fontSize=11;fontStyle=1;" parent="p2-Lfoundry" vertex="1">
+                    <mxGeometry x="1370" y="300" width="420" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-deploys" value="Model deployments (gpt-…)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=10;" parent="p2-Lfoundry" vertex="1">
+                    <mxGeometry x="1390" y="335" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-agents" value="Agents (Responses API)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=10;" parent="p2-Lfoundry" vertex="1">
+                    <mxGeometry x="1590" y="335" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-fqdn" value="3 FQDNs: {name}.openai.azure.com · {name}.services.ai.azure.com · {name}.cognitiveservices.azure.com" style="text;html=1;align=left;verticalAlign=middle;fillColor=#fff2cc;strokeColor=#d6b656;rounded=1;fontSize=10;spacing=6;" parent="p2-Lfoundry" vertex="1">
+                    <mxGeometry x="1390" y="405" width="380" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-Ldeps" value="4. Agent Dependencies (BYO PaaS)" parent="0"/>
+                <mxCell id="p2-storage" value="Azure Storage (files)" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/storage/Storage_Accounts.svg;fontSize=10;" parent="p2-Ldeps" vertex="1">
+                    <mxGeometry x="1370" y="660" width="48" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-search" value="Azure AI Search (indexes)" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/ai_machine_learning/Cognitive_Search.svg;fontSize=10;" parent="p2-Ldeps" vertex="1">
+                    <mxGeometry x="1540" y="660" width="48" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-cosmos" value="Azure Cosmos DB (agent threads/state)" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/databases/Azure_Cosmos_DB.svg;fontSize=10;" parent="p2-Ldeps" vertex="1">
+                    <mxGeometry x="1710" y="660" width="48" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-depnote" value="Public access disabled — reached via Private Endpoints" style="text;html=1;align=center;fillColor=#f8cecc;strokeColor=#b85450;rounded=1;fontSize=10;" parent="p2-Ldeps" vertex="1">
+                    <mxGeometry x="1360" y="760" width="420" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-Lnet" value="5. Private Endpoints, DNS &amp; Managed VNet" parent="0"/>
+                <mxCell id="p2-dnsicon" value="" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;imageAspect=0;aspect=fixed;image=img/lib/azure2/networking/DNS_Private_Zones.svg;" parent="p2-Lnet" vertex="1">
+                    <mxGeometry x="345" y="225" width="34" height="34" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-dnstext" value="• privatelink.openai.azure.com&lt;br&gt;• privatelink.services.ai.azure.com&lt;br&gt;• privatelink.cognitiveservices.azure.com&lt;br&gt;• privatelink.blob.core.windows.net&lt;br&gt;• privatelink.search.windows.net&lt;br&gt;• privatelink.documents.azure.com" style="text;html=1;align=left;verticalAlign=top;fillColor=none;strokeColor=none;fontSize=10;spacing=4;" parent="p2-Lnet" vertex="1">
+                    <mxGeometry x="345" y="265" width="280" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-pe-foundry" value="PE • Foundry (account)" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/networking/Private_Link.svg;fontSize=9;" parent="p2-Lnet" vertex="1">
+                    <mxGeometry x="1090" y="260" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-pe-storage" value="PE • Storage" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/networking/Private_Link.svg;fontSize=9;" parent="p2-Lnet" vertex="1">
+                    <mxGeometry x="1090" y="430" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-pe-search" value="PE • AI Search" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/networking/Private_Link.svg;fontSize=9;" parent="p2-Lnet" vertex="1">
+                    <mxGeometry x="1090" y="600" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-pe-cosmos" value="PE • Cosmos DB" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/networking/Private_Link.svg;fontSize=9;" parent="p2-Lnet" vertex="1">
+                    <mxGeometry x="1090" y="770" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-outmode" value="Outbound mode: Allow Only Approved Outbound" style="text;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;fontSize=10;fontStyle=1;" parent="p2-Lnet" vertex="1">
+                    <mxGeometry x="1485" y="1000" width="305" height="22" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-agentcompute" value="Agent compute&#xa;(Microsoft tenant)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="p2-Lnet">
+                    <mxGeometry x="1610" y="1045" width="170" height="65" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-firewall" value="Azure Firewall (FQDN 80/443)" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/networking/Firewalls.svg;fontSize=9;" parent="p2-Lnet" vertex="1">
+                    <mxGeometry x="1670" y="1130" width="48" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-rules" value="Approved: service tags · FQDN allowlist (*.identity.azure.net, login.microsoftonline.com, *.blob.core.windows.net) · managed PEs" style="text;html=1;align=left;verticalAlign=middle;fillColor=#ffffff;strokeColor=#9673a6;rounded=1;fontSize=9;spacing=4;" parent="p2-Lnet" vertex="1">
+                    <mxGeometry x="1345" y="1130" width="250" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-internet" value="Internet (blocked except approved)" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" parent="p2-Lnet" vertex="1">
+                    <mxGeometry x="1608" y="1195" width="174" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-e-pef-acct" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#0e8a8a;strokeWidth=2;dashed=1;" parent="p2-Lnet" source="p2-pe-foundry" target="p2-acct" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-e-pes-st" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#0e8a8a;strokeWidth=2;dashed=1;" parent="p2-Lnet" source="p2-pe-storage" target="p2-storage" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-e-pes-se" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#0e8a8a;strokeWidth=2;dashed=1;" parent="p2-Lnet" source="p2-pe-search" target="p2-search" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-e-pec-co" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#0e8a8a;strokeWidth=2;dashed=1;" parent="p2-Lnet" source="p2-pe-cosmos" target="p2-cosmos" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-Linbound" value="6. Inbound Flows" parent="0"/>
+                <mxCell id="p2-i-users-gw" value="VPN/ER" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#82b366;strokeWidth=2;fontSize=9;" parent="p2-Linbound" source="p2-users" target="p2-vpngw" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-i-gw-pe" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#82b366;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="p2-Linbound" source="p2-vpngw" target="p2-pe-foundry" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1040" y="544"/>
+                            <mxPoint x="1040" y="330"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="p2-i-bas-vm" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#82b366;strokeWidth=2;" parent="p2-Linbound" source="p2-bastion" target="p2-vm" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-Loutbound" value="7. Outbound Flows (Firewall)" parent="0"/>
+                <mxCell id="p2-o-agents-fw" value="agents run on managed compute" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#d79b00;strokeWidth=2;fontSize=9;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="p2-Loutbound" source="p2-agents" target="p2-agentcompute" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1825" y="362"/>
+                            <mxPoint x="1825" y="1077"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="p2-o-compute-fw" value="egress via firewall" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#d79b00;strokeWidth=2;fontSize=9;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="p2-Loutbound" source="p2-agentcompute" target="p2-firewall">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-o-fw-net" value="only approved FQDN/tags" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#d79b00;strokeWidth=2;fontSize=9;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="p2-Loutbound" source="p2-firewall" target="p2-internet" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-o-cmp-mpe" value="private data plane" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#d79b00;strokeWidth=2;dashed=1;fontSize=9;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="p2-Loutbound" source="p2-agentcompute" target="p2-mpe">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-o-fw-deps" value="to BYO dependencies" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#d79b00;strokeWidth=2;dashed=1;fontSize=9;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.22;entryY=1;entryDx=0;entryDy=0;" parent="p2-Loutbound" source="p2-mpe" target="p2-depzone" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-mpe" value="Managed PEs&#xa;(no customer NIC)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=9;" vertex="1" parent="p2-Loutbound">
+                    <mxGeometry x="1360" y="1045" width="150" height="65" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-Lgw" value="8. AI Gateway &amp; Agent Tools" parent="0"/>
+                <mxCell id="p2-apim" value="Azure APIM (AI Gateway)" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/app_services/API_Management_Services.svg;fontSize=9;" vertex="1" parent="p2-Lgw">
+                    <mxGeometry x="868" y="250" width="48" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-tools" value="&lt;b&gt;Agent tools&lt;/b&gt; (invoked by the agent)&lt;br&gt;Private via managed PE / APIM: MCP · OpenAPI · Azure Functions · A2A · AI Search&lt;br&gt;Microsoft backbone: Function Calling · Code Interpreter&lt;br&gt;Public endpoint (allow-list on firewall): Bing · Web · SharePoint&lt;br&gt;&lt;i&gt;APIM can publish APIs as MCP tools and front model endpoints&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ede7f6;strokeColor=#5e35b1;fontSize=10;spacing=6;" vertex="1" parent="p2-Lgw">
+                    <mxGeometry x="1330" y="1290" width="480" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-gw-vm-apim" value="governed model calls" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#1f6feb;strokeWidth=2;fontSize=9;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="p2-Lgw" source="p2-vm" target="p2-apim">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-gw-apim-pe" value="to model endpoint (PE)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#1f6feb;strokeWidth=2;fontSize=9;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="p2-Lgw" source="p2-apim" target="p2-pe-foundry">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1010" y="274"/>
+                            <mxPoint x="1010" y="280"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="p2-gw-mpe-tools" value="private tools via managed PE" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#0e8a8a;strokeWidth=2;dashed=1;fontSize=9;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.03;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="p2-Lgw" source="p2-mpe" target="p2-tools">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1340" y="1077"/>
+                            <mxPoint x="1340" y="1288"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="p2-gw-net-tools" value="public tools" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#d79b00;strokeWidth=2;dashed=1;fontSize=9;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.76;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="p2-Lgw" source="p2-internet" target="p2-tools">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="page-vnet-injection" name="3. VNet Injection - Hub &amp; Spoke + Firewall">
+        <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1850" pageHeight="1200" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="p3-title" value="Azure AI Foundry Networking — VNet Injection · Hub &amp; Spoke with Azure Firewall (mid-2026)" style="text;html=1;fontSize=18;fontStyle=1;verticalAlign=middle;align=left;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="20" width="1180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-legend" value="&lt;b&gt;Legend&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;color:#6c8ebf&quot;&gt;■&lt;/span&gt; Spoke VNet (workload)&amp;nbsp;&lt;span style=&quot;color:#9673a6&quot;&gt;■&lt;/span&gt; Hub VNet (shared egress)&lt;br&gt;Agents injected into a delegated subnet (Microsoft.App/environments, /27+).&lt;br&gt;Egress: spoke → UDR → Hub Azure Firewall → internet. Outbound config is immutable (set at create time)." style="text;html=1;align=left;verticalAlign=top;fillColor=#f5f5f5;strokeColor=#cccccc;fontSize=11;spacing=8;rounded=1;" parent="1" vertex="1">
+                    <mxGeometry x="1240" y="20" width="560" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-onprem" value="On-premises network" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;verticalAlign=top;fontStyle=1;fontSize=12;opacity=70;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="340" width="200" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-spoke" value="Spoke VNet — Workload (10.100.0.0/16)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;verticalAlign=top;fontStyle=1;fontSize=13;opacity=60;arcSize=2;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="160" width="1000" height="1000" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-dnszone" value="Private DNS Zones (linked to Spoke)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;verticalAlign=top;fontStyle=1;fontSize=12;opacity=80;" parent="1" vertex="1">
+                    <mxGeometry x="310" y="210" width="300" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-injsub" value="AgentInjectionSubnet — delegated to Microsoft.App/environments (/27+)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;dashed=1;verticalAlign=top;fontSize=11;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="310" y="470" width="430" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-pesub" value="PrivateEndpointSubnet (10.100.1.0/24)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#6c8ebf;dashed=1;verticalAlign=top;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="770" y="210" width="480" height="490" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-bassub" value="AzureBastionSubnet" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#6c8ebf;dashed=1;verticalAlign=top;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="310" y="720" width="200" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-vmsub" value="WorkloadsSubnet" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#6c8ebf;dashed=1;verticalAlign=top;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="540" y="720" width="200" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-hub" value="Hub VNet — Shared egress (10.0.0.0/16)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;verticalAlign=top;fontStyle=1;fontSize=13;opacity=70;arcSize=2;" parent="1" vertex="1">
+                    <mxGeometry x="310" y="900" width="430" height="230" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-fzone" value="Microsoft Foundry account (control plane)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;verticalAlign=top;fontStyle=1;fontSize=12;opacity=70;" parent="1" vertex="1">
+                    <mxGeometry x="1330" y="160" width="480" height="380" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-depzone" value="Agent dependencies — Bring Your Own PaaS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;verticalAlign=top;fontStyle=1;fontSize=12;opacity=70;" parent="1" vertex="1">
+                    <mxGeometry x="1330" y="580" width="480" height="320" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-internetzone" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="1330" y="940" width="480" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-Laccess" value="2. Customer Access" parent="0"/>
+                <mxCell id="p3-users" value="On-prem users / DNS forwarder" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=10;" parent="p3-Laccess" vertex="1">
+                    <mxGeometry x="60" y="400" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-bastion" value="Azure Bastion" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=10;" parent="p3-Laccess" vertex="1">
+                    <mxGeometry x="330" y="760" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-vm" value="Jump VM / dev client" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/compute/Virtual_Machine.svg;fontSize=10;" parent="p3-Laccess" vertex="1">
+                    <mxGeometry x="600" y="760" width="48" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-Lfoundry" value="3. Foundry Account + Injected Agents" parent="0"/>
+                <mxCell id="p3-pubnote" value="Public network access: Disabled · BYO Storage/Search/Cosmos required" style="text;html=1;align=center;fillColor=#f8cecc;strokeColor=#b85450;rounded=1;fontSize=10;fontStyle=1;" parent="p3-Lfoundry" vertex="1">
+                    <mxGeometry x="1350" y="195" width="440" height="36" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-acct" value="Foundry account" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/ai_machine_learning/Cognitive_Services.svg;fontSize=10;" parent="p3-Lfoundry" vertex="1">
+                    <mxGeometry x="1370" y="250" width="48" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-deploys" value="Model deployments (gpt-…)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=10;" parent="p3-Lfoundry" vertex="1">
+                    <mxGeometry x="1470" y="250" width="300" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-fqdn" value="3 FQDNs: {name}.openai / {name}.services.ai / {name}.cognitiveservices .azure.com" style="text;html=1;align=left;verticalAlign=middle;fillColor=#fff2cc;strokeColor=#d6b656;rounded=1;fontSize=10;spacing=6;" parent="p3-Lfoundry" vertex="1">
+                    <mxGeometry x="1370" y="330" width="400" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-rbac" value="Account managed identity needs &#39;Azure AI Enterprise Network Connection Approver&#39; on target resources" style="text;html=1;align=left;verticalAlign=middle;fillColor=#f5f5f5;strokeColor=#999999;rounded=1;fontSize=9;spacing=4;" parent="p3-Lfoundry" vertex="1">
+                    <mxGeometry x="1370" y="430" width="400" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-agents" value="Injected Agent compute (Container App env in spoke)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6b656;fontSize=10;fontStyle=1;" parent="p3-Lfoundry" vertex="1">
+                    <mxGeometry x="330" y="540" width="390" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-Ldeps" value="4. Agent Dependencies (BYO PaaS)" parent="0"/>
+                <mxCell id="p3-storage" value="Azure Storage" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/storage/Storage_Accounts.svg;fontSize=10;" parent="p3-Ldeps" vertex="1">
+                    <mxGeometry x="1370" y="630" width="48" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-search" value="Azure AI Search" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/ai_machine_learning/Cognitive_Search.svg;fontSize=10;" parent="p3-Ldeps" vertex="1">
+                    <mxGeometry x="1540" y="630" width="48" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-cosmos" value="Azure Cosmos DB" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/databases/Azure_Cosmos_DB.svg;fontSize=10;" parent="p3-Ldeps" vertex="1">
+                    <mxGeometry x="1710" y="630" width="48" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-depnote" value="Public access disabled — reached via Private Endpoints in the spoke" style="text;html=1;align=center;fillColor=#f8cecc;strokeColor=#b85450;rounded=1;fontSize=10;" parent="p3-Ldeps" vertex="1">
+                    <mxGeometry x="1350" y="730" width="440" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-toolnote" value="Agent tools by path — VNet subnet: MCP(private), OpenAPI, Azure Functions, A2A · Private endpoint: AI Search · Public: Bing/Web/SharePoint" style="text;html=1;align=left;verticalAlign=top;fillColor=#f5f5f5;strokeColor=#999999;rounded=1;fontSize=9;spacing=4;" parent="p3-Ldeps" vertex="1">
+                    <mxGeometry x="1350" y="770" width="440" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-Lnet" value="5. Private Endpoints, DNS &amp; Hub Firewall" parent="0"/>
+                <mxCell id="p3-dnsicon" value="" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;imageAspect=0;aspect=fixed;image=img/lib/azure2/networking/DNS_Private_Zones.svg;" parent="p3-Lnet" vertex="1">
+                    <mxGeometry x="325" y="235" width="34" height="34" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-dnstext" value="• privatelink.openai.azure.com&lt;br&gt;• privatelink.services.ai.azure.com&lt;br&gt;• privatelink.cognitiveservices.azure.com&lt;br&gt;• privatelink.blob.core.windows.net&lt;br&gt;• privatelink.search.windows.net&lt;br&gt;• privatelink.documents.azure.com" style="text;html=1;align=left;verticalAlign=top;fillColor=none;strokeColor=none;fontSize=10;spacing=4;" parent="p3-Lnet" vertex="1">
+                    <mxGeometry x="325" y="275" width="280" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-pe-foundry" value="PE • Foundry" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/networking/Private_Link.svg;fontSize=9;" parent="p3-Lnet" vertex="1">
+                    <mxGeometry x="820" y="270" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-pe-storage" value="PE • Storage" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/networking/Private_Link.svg;fontSize=9;" parent="p3-Lnet" vertex="1">
+                    <mxGeometry x="980" y="270" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-pe-search" value="PE • AI Search" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/networking/Private_Link.svg;fontSize=9;" parent="p3-Lnet" vertex="1">
+                    <mxGeometry x="820" y="430" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-pe-cosmos" value="PE • Cosmos DB" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/networking/Private_Link.svg;fontSize=9;" parent="p3-Lnet" vertex="1">
+                    <mxGeometry x="980" y="430" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-firewall" value="Azure Firewall" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/networking/Firewalls.svg;fontSize=10;" parent="p3-Lnet" vertex="1">
+                    <mxGeometry x="360" y="950" width="48" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-udr" value="UDR 0.0.0.0/0 → Firewall" style="text;html=1;align=center;fillColor=#ffffff;strokeColor=#9673a6;rounded=1;fontSize=9;" parent="p3-Lnet" vertex="1">
+                    <mxGeometry x="440" y="1060" width="240" height="36" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-peering" value="VNet peering" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=9;fontStyle=2;" parent="p3-Lnet" vertex="1">
+                    <mxGeometry x="430" y="860" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-internet" value="Internet" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=10;" parent="p3-Lnet" vertex="1">
+                    <mxGeometry x="800" y="940" width="150" height="95" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-e-pef-acct" value="resolves via DNS" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#0e8a8a;strokeWidth=2;dashed=1;fontSize=9;" parent="p3-Lnet" source="p3-pe-foundry" target="p3-acct" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-e-pes-st" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#0e8a8a;strokeWidth=2;dashed=1;" parent="p3-Lnet" source="p3-pe-storage" target="p3-storage" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-e-pes-se" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#0e8a8a;strokeWidth=2;dashed=1;" parent="p3-Lnet" source="p3-pe-search" target="p3-search" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-e-pec-co" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#0e8a8a;strokeWidth=2;dashed=1;" parent="p3-Lnet" source="p3-pe-cosmos" target="p3-cosmos" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-Linbound" value="6. Inbound Flows" parent="0"/>
+                <mxCell id="p3-i-users-pe" value="VPN/ER → private call" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#82b366;strokeWidth=2;fontSize=9;" parent="p3-Linbound" source="p3-users" target="p3-pe-foundry" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-i-bas-vm" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#82b366;strokeWidth=2;" parent="p3-Linbound" source="p3-bastion" target="p3-vm" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-i-vm-pe" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#82b366;strokeWidth=2;" parent="p3-Linbound" source="p3-vm" target="p3-pe-foundry" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-Loutbound" value="7. Outbound Flows (UDR to Hub)" parent="0"/>
+                <mxCell id="p3-o-agents-udr" value="UDR 0.0.0.0/0 → Hub Firewall" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#d79b00;strokeWidth=2;fontSize=9;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="p3-Loutbound" source="p3-agents" target="p3-firewall" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="298" y="600"/>
+                            <mxPoint x="298" y="974"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="p3-o-fw-net" value="inspected egress → Internet" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#d79b00;strokeWidth=2;fontSize=9;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="p3-Loutbound" source="p3-firewall" target="p3-internet" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-o-agents-pe" value="data plane via PE" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#d79b00;strokeWidth=2;dashed=1;fontSize=9;exitX=1;exitY=0.4;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="p3-Loutbound" source="p3-agents" target="p3-pe-search" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-Lgw" value="8. AI Gateway &amp; Agent Tools" parent="0"/>
+                <mxCell id="p3-apim" value="Azure APIM (AI Gateway, in spoke)" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/app_services/API_Management_Services.svg;fontSize=9;" vertex="1" parent="p3-Lgw">
+                    <mxGeometry x="830" y="730" width="48" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-tools" value="&lt;b&gt;Agent tools&lt;/b&gt; (VNet subnet)&lt;br&gt;MCP (private) · OpenAPI · Azure Functions · A2A&lt;br&gt;AI Search via private endpoint&lt;br&gt;APIM publishes APIs / MCP in the spoke&lt;br&gt;Public (Bing/Web/SharePoint) egress via hub firewall" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ede7f6;strokeColor=#5e35b1;fontSize=10;spacing=6;" vertex="1" parent="p3-Lgw">
+                    <mxGeometry x="980" y="840" width="300" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-gw-apim-pe" value="to model endpoint (PE)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#1f6feb;strokeWidth=2;fontSize=9;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="p3-Lgw" source="p3-apim" target="p3-pe-foundry">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="790" y="754"/>
+                            <mxPoint x="790" y="290"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="p3-gw-agents-tools" value="agent tools via VNet subnet" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#0e8a8a;strokeWidth=2;dashed=1;fontSize=9;exitX=1;exitY=0.7;exitDx=0;exitDy=0;entryX=0;entryY=0.2;entryDx=0;entryDy=0;" edge="1" parent="p3-Lgw" source="p3-agents" target="p3-tools">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="960" y="624"/>
+                            <mxPoint x="960" y="892"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
