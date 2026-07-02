@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e" pages="3">
     <diagram id="page-managed-internet" name="1. Managed VNet - Allow Internet Outbound">
-        <mxGraphModel dx="1092" dy="1001" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1850" pageHeight="1390" math="0" shadow="0">
+        <mxGraphModel dx="2051" dy="977" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1850" pageHeight="1390" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -66,7 +66,7 @@
                 <mxCell id="p1-agents" value="Agents (Responses API)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=10;" parent="p1-Lfoundry" vertex="1">
                     <mxGeometry x="1590" y="335" width="180" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="p1-fqdn" value="3 FQDNs: {name}.openai.azure.com · {name}.services.ai.azure.com · {name}.cognitiveservices.azure.com" style="text;html=1;align=left;verticalAlign=middle;fillColor=#fff2cc;strokeColor=#d6b656;rounded=1;fontSize=10;spacing=6;" parent="p1-Lfoundry" vertex="1">
+                <mxCell id="p1-fqdn" value="3 FQDNs:&amp;nbsp;&lt;div&gt;{name}.openai.azure.com ·&amp;nbsp;&lt;/div&gt;&lt;div&gt;{name}.services.ai.azure.com ·&amp;nbsp;&lt;/div&gt;&lt;div&gt;{name}.cognitiveservices.azure.com&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;fillColor=#fff2cc;strokeColor=#d6b656;rounded=1;fontSize=10;spacing=6;" parent="p1-Lfoundry" vertex="1">
                     <mxGeometry x="1390" y="405" width="380" height="100" as="geometry"/>
                 </mxCell>
                 <mxCell id="p1-Ldeps" value="4. Agent Dependencies (BYO PaaS)" parent="0"/>
@@ -88,7 +88,7 @@
                 <mxCell id="p1-acr" value="Container Registry" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/containers/Container_Registries.svg;fontSize=9;" parent="p1-Ldeps" vertex="1">
                     <mxGeometry x="1700" y="800" width="36" height="36" as="geometry"/>
                 </mxCell>
-                <mxCell id="p1-classicnote" value="Key Vault &amp; ACR: classic-Hub dependencies, optional in account model. Private ACR supported for projects created after 2026-06-25." style="text;html=1;align=left;verticalAlign=top;fillColor=#f5f5f5;strokeColor=#999999;rounded=1;fontSize=9;spacing=4;" parent="p1-Ldeps" vertex="1">
+                <mxCell id="p1-classicnote" value="Key Vault &amp;amp; ACR: classic-Hub dependencies,&lt;div&gt;&amp;nbsp;optional in account model.&lt;/div&gt;&lt;div&gt;&amp;nbsp;Private ACR supported for projects created&lt;/div&gt;&lt;div&gt;&amp;nbsp;after 2026-06-25.&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;fillColor=#f5f5f5;strokeColor=#999999;rounded=1;fontSize=9;spacing=4;" parent="p1-Ldeps" vertex="1">
                     <mxGeometry x="1360" y="800" width="230" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="p1-Lnet" value="5. Private Endpoints, DNS &amp; Managed VNet" parent="0"/>
@@ -148,11 +148,12 @@
                 </mxCell>
                 <mxCell id="p1-Loutbound" value="7. Outbound Flows" parent="0"/>
                 <mxCell id="p1-o-acct-compute" value="agents run on managed compute" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#d79b00;strokeWidth=2;fontSize=9;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="p1-Loutbound" source="p1-agents" target="p1-agentcompute" edge="1">
-                    <mxGeometry relative="1" as="geometry">
+                    <mxGeometry x="0.0517" y="-45" relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="1825" y="362"/>
                             <mxPoint x="1825" y="1085"/>
                         </Array>
+                        <mxPoint y="1" as="offset"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="p1-o-compute-net" value="egress: all internet allowed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#d79b00;strokeWidth=2;fontSize=9;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="p1-Loutbound" source="p1-agentcompute" target="p1-internet" edge="1">
@@ -190,7 +191,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="page-managed-approved" name="2. Managed VNet - Allow Approved Outbound">
-        <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1850" pageHeight="1440" math="0" shadow="0">
+        <mxGraphModel dx="1538" dy="733" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1850" pageHeight="1440" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -256,7 +257,7 @@
                 <mxCell id="p2-agents" value="Agents (Responses API)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=10;" parent="p2-Lfoundry" vertex="1">
                     <mxGeometry x="1590" y="335" width="180" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="p2-fqdn" value="3 FQDNs: {name}.openai.azure.com · {name}.services.ai.azure.com · {name}.cognitiveservices.azure.com" style="text;html=1;align=left;verticalAlign=middle;fillColor=#fff2cc;strokeColor=#d6b656;rounded=1;fontSize=10;spacing=6;" parent="p2-Lfoundry" vertex="1">
+                <mxCell id="p2-fqdn" value="3 FQDNs:&amp;nbsp;&lt;div&gt;{name}.openai.azure.com ·&amp;nbsp;&lt;/div&gt;&lt;div&gt;{name}.services.ai.azure.com ·&amp;nbsp;&lt;/div&gt;&lt;div&gt;{name}.cognitiveservices.azure.com&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;fillColor=#fff2cc;strokeColor=#d6b656;rounded=1;fontSize=10;spacing=6;" parent="p2-Lfoundry" vertex="1">
                     <mxGeometry x="1390" y="405" width="380" height="100" as="geometry"/>
                 </mxCell>
                 <mxCell id="p2-Ldeps" value="4. Agent Dependencies (BYO PaaS)" parent="0"/>
@@ -270,7 +271,7 @@
                     <mxGeometry x="1710" y="660" width="48" height="48" as="geometry"/>
                 </mxCell>
                 <mxCell id="p2-depnote" value="Public access disabled — reached via Private Endpoints" style="text;html=1;align=center;fillColor=#f8cecc;strokeColor=#b85450;rounded=1;fontSize=10;" parent="p2-Ldeps" vertex="1">
-                    <mxGeometry x="1360" y="760" width="420" height="26" as="geometry"/>
+                    <mxGeometry x="1360" y="750" width="420" height="26" as="geometry"/>
                 </mxCell>
                 <mxCell id="p2-Lnet" value="5. Private Endpoints, DNS &amp; Managed VNet" parent="0"/>
                 <mxCell id="p2-dnsicon" value="" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;imageAspect=0;aspect=fixed;image=img/lib/azure2/networking/DNS_Private_Zones.svg;" parent="p2-Lnet" vertex="1">
@@ -300,7 +301,7 @@
                 <mxCell id="p2-firewall" value="Azure Firewall (FQDN 80/443)" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=img/lib/azure2/networking/Firewalls.svg;fontSize=9;" parent="p2-Lnet" vertex="1">
                     <mxGeometry x="1670" y="1130" width="48" height="48" as="geometry"/>
                 </mxCell>
-                <mxCell id="p2-rules" value="Approved: service tags · FQDN allowlist (*.identity.azure.net, login.microsoftonline.com, *.blob.core.windows.net) · managed PEs" style="text;html=1;align=left;verticalAlign=middle;fillColor=#ffffff;strokeColor=#9673a6;rounded=1;fontSize=9;spacing=4;" parent="p2-Lnet" vertex="1">
+                <mxCell id="p2-rules" value="Approved: service tags ·&amp;nbsp;&lt;div&gt;FQDN allowlist&lt;/div&gt;&lt;div&gt;&amp;nbsp;(*.identity.azure.net, login.microsoftonline.com,&amp;nbsp;&lt;/div&gt;&lt;div&gt;*.blob.core.windows.net) · managed PEs&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;fillColor=#ffffff;strokeColor=#9673a6;rounded=1;fontSize=9;spacing=4;" parent="p2-Lnet" vertex="1">
                     <mxGeometry x="1345" y="1130" width="250" height="110" as="geometry"/>
                 </mxCell>
                 <mxCell id="p2-internet" value="Internet (blocked except approved)" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" parent="p2-Lnet" vertex="1">
@@ -335,18 +336,21 @@
                 </mxCell>
                 <mxCell id="p2-Loutbound" value="7. Outbound Flows (Firewall)" parent="0"/>
                 <mxCell id="p2-o-agents-fw" value="agents run on managed compute" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#d79b00;strokeWidth=2;fontSize=9;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="p2-Loutbound" source="p2-agents" target="p2-agentcompute" edge="1">
-                    <mxGeometry relative="1" as="geometry">
+                    <mxGeometry x="0.0613" y="-5" relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="1825" y="362"/>
                             <mxPoint x="1825" y="1077"/>
                         </Array>
+                        <mxPoint y="1" as="offset"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="p2-o-compute-fw" value="egress via firewall" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#d79b00;strokeWidth=2;fontSize=9;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="p2-Loutbound" source="p2-agentcompute" target="p2-firewall">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="p2-o-fw-net" value="only approved FQDN/tags" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#d79b00;strokeWidth=2;fontSize=9;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="p2-Loutbound" source="p2-firewall" target="p2-internet" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
+                    <mxGeometry x="-0.8889" y="77" relative="1" as="geometry">
+                        <mxPoint x="-2" y="-18" as="offset"/>
+                    </mxGeometry>
                 </mxCell>
                 <mxCell id="p2-o-cmp-mpe" value="private data plane" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#d79b00;strokeWidth=2;dashed=1;fontSize=9;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="p2-Loutbound" source="p2-agentcompute" target="p2-mpe">
                     <mxGeometry relative="1" as="geometry"/>
@@ -376,11 +380,12 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="p2-gw-mpe-tools" value="private tools via managed PE" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#0e8a8a;strokeWidth=2;dashed=1;fontSize=9;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.03;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="p2-Lgw" source="p2-mpe" target="p2-tools">
-                    <mxGeometry relative="1" as="geometry">
+                    <mxGeometry x="-0.3035" y="4" relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="1340" y="1077"/>
                             <mxPoint x="1340" y="1288"/>
                         </Array>
+                        <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="p2-gw-net-tools" value="public tools" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#d79b00;strokeWidth=2;dashed=1;fontSize=9;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.76;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="p2-Lgw" source="p2-internet" target="p2-tools">
@@ -390,7 +395,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="page-vnet-injection" name="3. VNet Injection - Hub &amp; Spoke + Firewall">
-        <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1850" pageHeight="1200" math="0" shadow="0">
+        <mxGraphModel dx="1334" dy="1001" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1850" pageHeight="1200" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
